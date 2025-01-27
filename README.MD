@@ -1,23 +1,42 @@
-# Test App for JS without a framework
+# Readium Web
 
-This is an example of how to use the ts-toolkit. It's currently under construction, more features (preferences) will be added as the preferences API is added, otherwise you can inject them yourself, if you dare!
+Next generation SDK for publications in Web Apps
 
-To run:
+## Usage
+
+Three packages are made available by this repository, which are published on NPM.
+They are:
+- [@readium/shared](https://www.npmjs.com/package/@readium/shared)
+- [@readium/navigator-html-injectables](https://www.npmjs.com/package/@readium/navigator-html-injectables)
+- [@readium/navigator](https://www.npmjs.com/package/@readium/navigator)
+
+# Development
+
+You need `pnpm` installed as this is a monorepo using workspaces.
+
+To install pnpm using node:
 
 ```sh
-# Install dependencies
+npm install -g pnpm
+```
+
+Note there are [several other options](https://pnpm.io/installation) if needed.
+
+To install all dependencies:
+
+```sh
 pnpm install
-# Run the dev server
-pnpm dev
 ```
 
-You can then visit e.g. http://localhost:5173 in your browser. If you want to try out another book in the `./public/books` folder, you can change the book parameter, for example http://localhost:5173?book=bella . The default is `moby-dick`.
+Then workspaces should be all set up and you can build them from their directory in the following order:
 
-To build:
+1. shared
+2. navigator-html-injectables
+3. navigator
 
-```sh
-# Bundle the testapp
-pnpm build
-```
+## Workspaces
 
-It will bundle the testapp into `dist`, with all the assets necessary (fonts, scripts, stylesheets, etc.).
+- [Shared](./shared/): shared models to be used across other Readium projects and implementations in Typescript.
+- [Navigator](./navigator/): a navigator for web platforms based on the readium Navigator spec.
+- [Navigator-html-injectables](./navigator-html-injectables/): provides access and control over a resource from a navigator on any modern browser or embedded browser frame.
+- [Testapp/vanilla](./testapp/vanilla/): an example of how to use the ts-toolkit.
